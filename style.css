@@ -1,9 +1,10 @@
 :root {
-    --primary:#2563EB;
-    --secondary:#10B981;
-    --accent:#22C55E;
-    --light:#F5F7FA;
-    --dark:#0F172A;
+    --primary: #2563eb;
+    --secondary: #10b981;
+    --background: #2563eb;
+    --dark: #0f172a;
+    --light:  #2563eb;
+    --gray: #ffffff;
 }
 
 *{
@@ -20,7 +21,7 @@ body {
     position: relative;
     overflow: hidden;
 
-    background: linear-gradient(-45deg, #1E3A8A, #2563EB, #10B981, #0F172A);
+    background: linear-gradient(-45deg, #1E3A8A, #2563EB, #10B981, #ffffff);
     background-size: 400% 400%;
     animation: gradientBG 12s ease infinite;
 }
