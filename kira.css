@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0F172A, #2563EB, #10B981);
+    color: white;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 40px;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #22C55E; /* Accent */
+}
+
+/* HERO KIRA */
+
+.kira-hero {
+    text-align: center;
+    padding: 80px 20px 40px 20px;
+}
+
+.kira-hero h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+.kira-hero p {
+    font-size: 1.3rem;
+    margin-top: 20px;
+    color: #10B981; /* Secondary */
+    min-height: 40px;
+}
+
+/* Cursor parpadeante */
+
+.cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* CHAT */
+
+.chat-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 50px;
+}
+
+.chat-box {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(37,99,235,0.4); /* Azul primary */
+}
+
+.kira-message {
+    background: rgba(16,185,129,0.2); /* Secondary */
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 70%;
+}
+
+.user-message {
+    background: rgba(37,99,235,0.2); /* Primary */
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 70%;
+    margin-left: auto;
+    text-align: right;
+}
+
+/* INPUT */
+
+.chat-input {
+    display: flex;
+    margin-top: 15px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.chat-input button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #2563EB; /* Primary */
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.chat-input button:hover {
+    background: #10B981; /* Secondary */
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    background: rgba(15, 23, 42, 0.6);
+}

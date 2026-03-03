@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KIRA - Asistente IA | EmoWork</title>
+<link rel="stylesheet" href="kira.css">
+</head>
+<body>
+
+<header>
+  <div class="logo"></div>
+  <nav>
+      <a href="index.html">Inicio</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="chat.html" class="active">IA</a>
+      <a href="assessment.html">Evaluación</a>
+      <a href="login.html">Login</a>
+  </nav>
+</header>
+
+<section class="kira-hero">
+    <h1>
+        <span id="kiraTitle"></span>
+        <span class="cursor">|</span>
+    </h1>
+    <p id="kiraSubtitle"></p>
+</section>
+
+<section class="chat-container">
+    <div class="chat-box" id="chatBox">
+        <div class="kira-message">
+            Hola 😊 soy KIRA, estoy aquí para escucharte. 
+            ¿Cómo te sientes hoy?
+        </div>
+    </div>
+
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Escribe cómo te sientes hoy...">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+</section>
+
+<footer>
+© 2026 EmoWork Enterprise
+</footer>
+
+<script>
+
+/* =========================
+   ANIMACIÓN PRESENTACIÓN
+========================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const titleText = "Hola, soy KIRA 💜";
+    const subtitleText = "Tu asistente emocional inteligente.";
+    const sloganText = "Si tú estás bien, yo estaré bien 😊";
+
+    const titleElement = document.getElementById("kiraTitle");
+    const subtitleElement = document.getElementById("kiraSubtitle");
+
+    function typeEffect(text, element, speed, callback) {
+        element.textContent = "";
+        let i = 0;
+
+        function escribir() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(escribir, speed);
+            } else {
+                if (callback) callback();
+            }
+        }
+
+        escribir();
+    }
+
+    typeEffect(titleText, titleElement, 60, function () {
+        setTimeout(function () {
+            typeEffect(subtitleText + " " + sloganText, subtitleElement, 35);
+        }, 500);
+    });
+
+});
+
+
+/* =========================
+   IA SIMULADA AVANZADA
+========================= */
+
+let ultimaEmocion = null;
+
+const emociones = {
+    positivo: ["feliz","contento","bien","alegre","genial","excelente"],
+    triste: ["triste","mal","deprimido","solo","desanimado"],
+    estres: ["estres","estrés","agotado","presionado","saturado","cansado"],
+    ansiedad: ["ansioso","ansiedad","nervioso","preocupado"],
+    enojo: ["enojado","molesto","furioso","irritado"]
+};
+
+function detectarEmocion(texto) {
+    texto = texto.toLowerCase();
+
+    for (let emocion in emociones) {
+        for (let palabra of emociones[emocion]) {
+            if (texto.includes(palabra)) {
+                return emocion;
+            }
+        }
+    }
+
+    return "neutral";
+}
+
+function generarRespuestaNatural(emocionActual) {
+
+    let respuesta = "";
+
+    if (ultimaEmocion && emocionActual !== ultimaEmocion && emocionActual !== "neutral") {
+        respuesta += "Noto que tu emoción ha cambiado desde antes 💜 ";
+    }
+
+    switch (emocionActual) {
+
+        case "positivo":
+            respuesta += "Me alegra sentir esa energía en tus palabras 😊 ";
+            respuesta += "¿Qué ha influido para que te sientas así hoy?";
+            break;
+
+        case "triste":
+            respuesta += "Percibo algo de tristeza en lo que dices 💜 ";
+            respuesta += "Estoy aquí contigo. ¿Quieres contarme qué lo provocó?";
+            break;
+
+        case "estres":
+            respuesta += "Suena a que estás manejando mucha presión 😣 ";
+            respuesta += "Podemos organizar lo que te preocupa paso a paso.";
+            break;
+
+        case "ansiedad":
+            respuesta += "Percibo inquietud en tus palabras 😰 ";
+            respuesta += "Respiremos juntos un momento. ¿Qué pensamiento te genera eso?";
+            break;
+
+        case "enojo":
+            respuesta += "Siento frustración en lo que expresas 😡 ";
+            respuesta += "Es válido sentirlo. ¿Qué ocurrió exactamente?";
+            break;
+
+        default:
+            respuesta += "Estoy procesando lo que compartes 💜 ";
+            respuesta += "Cuéntame un poco más para entender mejor cómo te sientes.";
+    }
+
+    if (ultimaEmocion === "triste" && emocionActual === "positivo") {
+        respuesta += " Me alegra ver que tu estado parece estar mejorando ✨";
+    }
+
+    ultimaEmocion = emocionActual;
+
+    return respuesta;
+}
+
+function sendMessage() {
+    const input = document.getElementById("userInput");
+    const chatBox = document.getElementById("chatBox");
+
+    if (input.value.trim() === "") return;
+
+    const textoUsuario = input.value;
+
+    const userMessage = document.createElement("div");
+    userMessage.className = "user-message";
+    userMessage.textContent = textoUsuario;
+    chatBox.appendChild(userMessage);
+
+    const emocionActual = detectarEmocion(textoUsuario);
+    const respuesta = generarRespuestaNatural(emocionActual);
+
+    const kiraMessage = document.createElement("div");
+    kiraMessage.className = "kira-message";
+
+    setTimeout(() => {
+        kiraMessage.textContent = respuesta;
+        chatBox.appendChild(kiraMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 800);
+
+    input.value = "";
+}
+
+</script>
+
+</body>
+</html>
