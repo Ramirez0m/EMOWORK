@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro - EmoWork</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<img src="images/emowork-logo.png" class="bg-logo" alt="">
+
+<div class="container">
+    <div class="login-card">
+        <h2>Crear Cuenta</h2>
+
+        <input type="text" id="nombre" placeholder="Nombre completo">
+        <input type="email" id="correo" placeholder="Email">
+        <input type="password" id="password" placeholder="Contraseña">
+        <input type="password" id="confirmPassword" placeholder="Confirmar Contraseña">
+
+        <button class="btn" id="registerBtn">Registrarse</button>
+
+        <div class="link">
+            ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById("registerBtn").addEventListener("click", function() {
+
+    let nombre = document.getElementById("nombre").value;
+    let correo = document.getElementById("correo").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    if(nombre === "" || correo === "" || password === "" || confirmPassword === "") {
+        alert("Por favor completa todos los campos");
+        return;
+    }
+
+    if(password !== confirmPassword) {
+        alert("Las contraseñas no coinciden");
+        return;
+    }
+
+    alert("Registro exitoso 🎉");
+    window.location.href = "login.html";
+
+});
+</script>
+</body>
+</html>
